@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<h1>admin page user name is sourabh,password is sourabh</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Roll</th>
+                <th scope="col">Course</th>
+            </tr>
+        </thead>
+        {% for student in student_list %}
+        <tbody>
+            <tr>
+                <th scope="row">{{student.id}}</th>
+                <td>{{student.name}}</td>
+                <td>{{student.roll}}</td>
+                <td>{{student.course}}</td>
+            </tr>            
+        </tbody>
+        {% endfor %}
+        
+        {% for new_data in new_context %}
+        <tbody>
+            <tr>
+                <th scope="row">{{new_data.id}}</th>
+                <td>{{new_data.name}}</td>
+                <td>{{new_data.roll}}</td>
+                <td>{{new_data.course}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</body>
+</html>

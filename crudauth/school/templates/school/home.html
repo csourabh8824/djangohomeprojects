@@ -1,0 +1,47 @@
+{% extends 'school/base.html' %}
+{% block content %}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+    <h1>Student Records:</h1>
+        <table>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Age</th>
+    <th>Action</th>
+  </tr>
+    {% for data in student_data %}
+    <tr>
+    
+        <td>{{data.username}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.password}}</td>
+        <td>{{data.age}}</td>
+        <td>
+            <a href="{% url 'update' data.id %}" >Update</a>
+            <form action="{% url 'delete' data.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+            </form>
+        </td>
+    
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}
